@@ -1,6 +1,6 @@
 // Header
 
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import LogoIcon from '../assets/logo.svg';
 import Button from '@material-ui/core/Button';
+
+import history from '../routes/history.js';
 
 const styles = theme => ({
     root: {
@@ -18,6 +20,10 @@ const styles = theme => ({
     },
     button: {
         margin: theme.spacing.unit,
+        color: '#fff'
+    },
+    active: {
+        textDecoration: 'underline'
     },
     title: {
             display: 'none',
@@ -42,43 +48,66 @@ const styles = theme => ({
     logoContent: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: '0 8px',
+        '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: `rgba(243, 243, 243, 0.22)`,
+            borderRadius: '5px',
+            padding: '0 8px'
+            // boxShadow: `4px 4px 5px 0px rgba(170, 0, 12, 0.57), 0px 2px 2px 0px rgba(170, 0, 12, 0.57), 0px 3px 1px -2px rgba(170, 0, 12, 0.57)`
+        }
     }
 });
 
-function SearchAppBar(props) {
-    const { classes } = props;
-    return (
-        <div className={classes.root}>
-        <AppBar position="static" className={classes.header}>
-            <Toolbar>
-                <div className={classes.headerWrap}>
-                    <div className={classes.logoContent}>
-                        <img className={classes.logo} src={LogoIcon} />
-                        <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                                Demo Cricket
-                        </Typography>
+class Header extends Component {
+
+    render() {
+        const { classes} = this.props;
+        console.log(window.location,"eeee")
+
+        return (
+            <div className={classes.root}>
+            <AppBar position="static" className={classes.header}>
+                <Toolbar>
+                    <div className={classes.headerWrap}>
+                        <div className={classes.logoContent} onClick={() => history.push('')}>
+                            <img className={classes.logo} src={LogoIcon} />
+                            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+                                    Demo Cricket
+                            </Typography>
+                        </div>
+                        <div className={classes.buttonContent}>
+                            <Button size="small"  color="secondary" className={`${classes.button} ${this.getActiveClass('matches')}`} onClick={() => {history.push('matches');this.getActiveClass('matches')}}>
+                                Matches
+                            </Button>
+                            <Button size="small"  color="secondary" className={`${classes.button} ${this.getActiveClass('schedule')}`} onClick={() => {history.push('schedule');this.getActiveClass('schedule')}}>
+                                Schedule
+                            </Button>
+                            <Button size="small"  color="secondary" className={`${classes.button} ${this.getActiveClass('gallery')}`} onClick={() => {history.push('gallery');this.getActiveClass('gallery')}}>
+                                Gallery
+                            </Button>
+                        </div>
                     </div>
-                    <div className={classes.buttonContent}>
-                        <Button size="small" variant="contained" color="secondary" className={classes.button}>
-                            Matches
-                        </Button>
-                        <Button size="small" variant="contained" color="secondary" className={classes.button}>
-                            Schedule
-                        </Button>
-                        <Button size="small" variant="contained" color="secondary" className={classes.button}>
-                            Gallery
-                        </Button>
-                    </div>
-                </div>
-            </Toolbar>
-        </AppBar>
-        </div>
-    );
+                </Toolbar>
+            </AppBar>
+            </div>
+        );
+    }
+
+    getActiveClass(name) {
+        if (name === 'matches') {
+            return window.location.pathname === `/${name}` ? 'link-active' : '';
+        } else if (name === 'schedule') {
+            return window.location.pathname === `/${name}` ? 'link-active' : '';
+        } else if (name === 'gallery') {
+            return window.location.pathname === `/${name}` ? 'link-active' : '';
+        }
+    }
 }
 
-SearchAppBar.propTypes = {
+Header.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SearchAppBar);
+export default withStyles(styles)(Header);

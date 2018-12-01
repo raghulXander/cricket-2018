@@ -75,7 +75,6 @@ class ScrollbleBar extends Component {
         if (!isEmpty(commentaryData) && commentaryData.data.length > 0) {
             return (
                 <div className={classes.root}>
-                    <Header />
                     <Tabs
                         value={value}
                         onChange={this.handleChange}
@@ -92,20 +91,16 @@ class ScrollbleBar extends Component {
         } else {
             return (
                 <div className={classes.root}>
-                    {/* <AppBar position="static" className={classes.header} color="default">
-
-                    </AppBar> */}
-                     <Header />
-                        <Tabs
-                            value={0}
-                            onChange={this.handleChange}
-                            scrollable
-                            scrollButtons="on"
-                            indicatorColor="#fff"
-                            textColor="primary"
-                            >
-                            <Tab label="Default" />
-                        </Tabs>
+                    <Tabs
+                        value={0}
+                        onChange={this.handleChange}
+                        scrollable
+                        scrollButtons="on"
+                        indicatorColor="#fff"
+                        textColor="primary"
+                        >
+                        <Tab label="Default" />
+                    </Tabs>
                     <TabContainer>No Inningg Data</TabContainer>}
                 </div>
             )
@@ -131,7 +126,7 @@ class ScrollbleBar extends Component {
         if (commentaryData.data.length > 0) {
             return commentaryData.data.map((innings, idx) => {
                 if (innings) {
-                    let title = `Innings-${innings.innings_id}`
+                    let title = `Match - ${innings.innings_id}`
                     return (
                         <Tab key={idx} label={title} />
                     )

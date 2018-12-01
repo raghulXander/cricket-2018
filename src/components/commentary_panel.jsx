@@ -156,11 +156,11 @@ class CommentaryPanel extends Component {
 
         return messageList.map((message, idx) => {
             return (
-                <div className="panel-message-wrap">
+                <div key={idx} className="panel-message-wrap">
                 <Card key={idx} className={classes.card}>
                     <CardHeader
                         avatar={
-                            <Avatar aria-label="Recipe" className={`${classes.avatar} ${this.getAvatarClass(message.type)}`}>
+                            <Avatar aria-label="Ball" className={`${classes.avatar} ${this.getAvatarClass(message.type)}`}>
                                 {this.getAvatarLetter(message.type)}
                             </Avatar>
                         }

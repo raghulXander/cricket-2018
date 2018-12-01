@@ -1,7 +1,7 @@
 import React from "react";
 
 const PageNotfound = () => (
-    <svg class="svgfondo" version="1.1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" width="1250px" height="400px" viewBox="0 0 2000 800" enable-background="new 0 0 2000 800" >
+    <svg className="svgfondo" version="1.1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" width="1250px" height="400px" viewBox="0 0 2000 800" enable-background="new 0 0 2000 800" >
 
         <g id="all">
 

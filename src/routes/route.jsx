@@ -6,10 +6,10 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import Main from '../containers/main.jsx';
+import Main from '../containers/home.jsx';
 import Gallery from '../containers/gallery.jsx';
 import PageNotFound from '../containers/pagenotfound.jsx';
-import ScrollableBar from '../containers/home.jsx';
+import ScrollableBar from '../containers/matches.jsx';
 
 const routes = [
     {

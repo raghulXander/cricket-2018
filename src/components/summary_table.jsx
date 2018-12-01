@@ -24,7 +24,7 @@ const styles = theme => ({
 class SummaryTable extends Component {
     render() {
         const {data, classes} =  this.props;
-        console.log(data,"DFDFD")
+
         if (data) {
             return (
                 <Paper className={classes.root}>
