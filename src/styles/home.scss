@@ -148,3 +148,56 @@
     }    
 }
 
+@media screen and (max-width: 767px) {
+    .main-wrap {
+        .react-parallax  {
+            .button-container {
+                button {
+                    font-size: 11px;
+                }
+            }
+
+            .quotes-container {
+                .quoteContent {
+                    font-size: 16px;
+                }
+
+                .quoteSymbol {
+                    font-size: 21px;
+                }
+                .quoteAuthor {
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .countdown-wrap {
+            #countdown {
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+                height: auto;
+
+                > #tiles {
+                    > span {
+                        display: block;
+                        margin: 25px 10px;
+                    }
+                }
+
+                > .labels {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    height: auto;
+                    width: auto;
+
+                    > li {
+                        min-height: 100px;
+                    }
+                }
+            }
+        }
+    }
+}
+

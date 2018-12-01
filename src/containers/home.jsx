@@ -122,7 +122,7 @@ class App extends Component {
                 <Parallax bgImage={Home2} strength={-90}
                     renderLayer={percentage => (
                         <div>
-                            <div
+                            <div className='quote-container'
                                 style={{
                                     position: "absolute",
                                     background: `linear-gradient(to right, #00c9ff, #92fe9d)`,
@@ -158,7 +158,7 @@ class App extends Component {
                 blur={{ min: -1, max: 3 }}
                 renderLayer={percentage => (
                     <div>
-                    <div
+                    <div className='button-container'
                         style={{
                         position: "absolute",
                         background: `linear-gradient(to right, #fceabb, #f8b500)`,
