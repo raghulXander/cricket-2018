@@ -1,12 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import { applyMiddleware, createStore } from 'redux'
+import thunk from 'redux-thunk'
+import {
+    Router,
+    Route,
+    Switch,
+} from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Home from './containers/home.jsx';
+import './main.scss'
+import routes from './routes/route'
+import history from './routes/history';
+import mainReducers from './reducers/reducer';
+import Main from './containers/main.jsx';
+import Gallery from './containers/gallery.jsx';
+import PageNotFound from './containers/pagenotfound.jsx';
+import ScrollableBar from './containers/home.jsx';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
+const store = createStoreWithMiddleware(mainReducers)
+
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Router history={history} >
+            <Switch>
+                <Route exact path="/" component={Main} />
+                <Route path="/gallery" component={Gallery} />
+                <Route path="/matches" component={ScrollableBar} />
+                <Route component={PageNotFound} />
+            </Switch>
+        </Router>
+    </Provider>,
+    document.getElementById('root')
+);
+
+//Hot Reloader
+module.hot.accept();

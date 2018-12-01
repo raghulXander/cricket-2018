@@ -1,0 +1,41 @@
+// Main
+
+@import './styles/avatar.scss';
+@import './styles/home.scss';
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+#root {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+._loading-overlay {
+    background-color: #0000007a;
+    width: 100%;
+    height: 100%;
+}
+
+.svgfondo { 
+    background-color:#07bdeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+div,
+span,
+table,
+a,
+button {
+    font-family: 'Poppins', sans-serif;
+}
