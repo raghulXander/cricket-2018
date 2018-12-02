@@ -54,6 +54,12 @@ const styles = theme => ({
         background: `linear-gradient(to right, #F2C94C, #F2994A)` /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     },
+    cardSubHeader: {
+        fontStyle: 'italic'
+    },
+    cardHeader: {
+        fontWeight: 600,
+    },
     cardContent: {
         paddingTop: theme.spacing.unit * 3,
         paddingBottom: theme.spacing.unit * 3,
@@ -205,7 +211,10 @@ class CommentaryPanel extends Component {
                         }
                         title={`Over Number - ${message.over_num}`}
                         subheader={message.type}
-                        className={`${this.getHeaderClass(message.type)}`}
+                        classes={{root: `${this.getHeaderClass(message.type)}`,
+                            title: classes.cardHeader,
+                            subheader: classes.cardSubHeader
+                        }}
                     />
                     <CardContent className={classes.cardContent}>
                         <Typography paragraph component="message" dangerouslySetInnerHTML={{__html: message.message_text}}></Typography>
