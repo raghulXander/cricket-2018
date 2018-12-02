@@ -1,66 +1,14 @@
 // // Gallery 
 
-// import React, { Component } from 'react';
-// import Lightbox from 'react-image-lightbox';
-// import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
-
-
-
-// class Gallery extends Component {
-//     constructor(props) {
-//         super(props);
-    
-//         this.state = {
-//             photoIndex: 0,
-//             isOpen: false,
-//         };
-//     }
-
-//     render() {
-//         const { photoIndex, isOpen } = this.state;
-    
-//         return (
-//             <div>
-//                 <button type="button" onClick={() => this.setState({ isOpen: true })}>
-//                     View Gallery
-//                 </button>
-//                 {isOpen && (
-//                     <Lightbox
-//                         mainSrc={images[photoIndex]}
-//                         nextSrc={images[(photoIndex + 1) % images.length]}
-//                         prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-//                         onCloseRequest={() => this.setState({ isOpen: false })}
-//                         onMovePrevRequest={() =>
-//                         this.setState({
-//                             photoIndex: (photoIndex + images.length - 1) % images.length,
-//                         })
-//                         }
-//                         onMoveNextRequest={() =>
-//                         this.setState({
-//                             photoIndex: (photoIndex + 1) % images.length,
-//                         })
-//                         }
-//                     />
-//                 )}
-//             </div>
-//         );
-//     }
-// }
-
-// export default Gallery;
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Lightbox from 'react-image-lightbox';
@@ -71,12 +19,26 @@ import Gallery2 from '../assets/gallery/gallery2.jpg';
 import Gallery3 from '../assets/gallery/gallery3.jpg';
 import Gallery4 from '../assets/gallery/gallery4.jpg';
 
+import MobGallery1 from '../assets/match_gallery/gallery_code_1.jpg';
+import MobGallery2 from '../assets/match_gallery/gallery_code_2.jpg';
+import MobGallery3 from '../assets/match_gallery/gallery_code_3.jpg';
+import MobGallery4 from '../assets/match_gallery/gallery_code_4.jpg';
+import MobGallery5 from '../assets/match_gallery/gallery_code_5.jpg';
+import MobGallery6 from '../assets/match_gallery/gallery_code_6.jpg';
+import MobGallery7 from '../assets/match_gallery/gallery_code_7.jpg';
+import MobGallery8 from '../assets/match_gallery/gallery_code_8.jpg';
+
 const images = [
-    '//placekitten.com/1500/500',
-    '//placekitten.com/4000/3000',
-    '//placekitten.com/800/1200',
-    '//placekitten.com/1500/1500',
+    MobGallery1,
+    MobGallery2,
+    MobGallery3,
+    MobGallery4,
+    MobGallery5,
+    MobGallery6,
+    MobGallery7,
+    MobGallery8
 ];
+
 const styles = theme => ({
   appBar: {
     position: 'relative',
@@ -86,7 +48,7 @@ const styles = theme => ({
     marginRight: theme.spacing.unit * 2,
   },
   heroUnit: {
-    backgroundColor: theme.palette.background.paper,
+    background: `linear-gradient(to right, #FFFFFF, #FFEFBA)` /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   },
   heroContent: {
     maxWidth: 600,
@@ -107,7 +69,10 @@ const styles = theme => ({
     },
   },
   cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`,
+    padding: `${theme.spacing.unit * 8}px ${theme.spacing.unit * 4}px`,
+    margin: 0,
+    background: `linear-gradient(to right, #3a7bd5, #00d2ff)`,/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: '100%'
   },
   card: {
     height: '100%',
@@ -169,24 +134,24 @@ class Album extends Component {
                 <CssBaseline />
                 <main>
                     <div className={classes.heroUnit}>
-                    <div className={classes.heroContent}>
-                        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                            Gallery and News
-                        </Typography>
-                        <Typography variant="h6" align="center" color="textSecondary" paragraph>
-                            For over 25 years, The Cricket Gallery has served as a conduit between animator & viewer; bridging the gap for fans of cartoons, to the cartoon world itself. We take pride in providing the highest quality, genuine, studio certified, animation artwork to our community. We're happy you've joined us.
-                            Welcome to cricket World
-                        </Typography>
-                        <div className={classes.heroButtons}>
-                        <Grid container spacing={16} justify="center">
-                            <Grid item>
-                            <Button variant="outlined" color="primary" onClick={() => this.setState({ isOpen: true })}>
-                                Gallery
-                            </Button>
+                        <div className={classes.heroContent}>
+                            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                                Gallery and News
+                            </Typography>
+                            <Typography variant="h6" align="center" color="textSecondary" paragraph>
+                                For over 25 years, The Cricket Gallery has served as a conduit between animator & viewer; bridging the gap for fans of cartoons, to the cartoon world itself. We take pride in providing the highest quality, genuine, studio certified, animation artwork to our community. We're happy you've joined us.
+                                Welcome to cricket World
+                            </Typography>
+                            <div className={classes.heroButtons}>
+                            <Grid container spacing={16} justify="center">
+                                <Grid item>
+                                <Button variant="outlined" color="primary" onClick={() => this.setState({ isOpen: true })}>
+                                    Gallery
+                                </Button>
+                                </Grid>
                             </Grid>
-                        </Grid>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div className={classNames(classes.layout, classes.cardGrid)}>
                     {/* End hero unit */}

@@ -189,7 +189,7 @@ class App extends Component {
                 </Parallax>
                 
                 <h1>| | | | | | |</h1>
-                <div className={classes.middleLayer} style={{ height: 400 }}>
+                <div className={classes.middleLayer}>
                     <div className={classes.cricketText}>
                         How long for 2019 Cricket World Cup?
                     </div>

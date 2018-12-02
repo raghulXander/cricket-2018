@@ -19,6 +19,7 @@ import Main from './containers/home.jsx';
 import Gallery from './containers/gallery.jsx';
 import PageNotFound from './containers/pagenotfound.jsx';
 import ScrollableBar from './containers/matches.jsx';
+import Schedule from './containers/schedule.jsx';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 const store = createStoreWithMiddleware(mainReducers)
@@ -28,12 +29,15 @@ class Layout extends Component {
         return (
             <div className='index'>
                 <Header />
-                <Switch>
-                    <Route exact path="/" render={(props) => <Main {...props} />} />
-                    <Route path="/gallery" render={(props) => <Gallery {...props} />} />
-                    <Route path="/matches" render={(props) => <ScrollableBar {...props} />} />
-                    <Route component={PageNotFound} />
-                </Switch>
+                <main>
+                    <Switch>
+                        <Route exact path="/" render={(props) => <Main {...props} />} />
+                        <Route path="/gallery" render={(props) => <Gallery {...props} />} />
+                        <Route path="/matches" render={(props) => <ScrollableBar {...props} />} />
+                        <Route path="/schedule" render={(props) => <Schedule {...props} />} />
+                        <Route component={PageNotFound} />
+                    </Switch>
+                </main>
             </div>
         )
     }

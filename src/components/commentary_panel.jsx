@@ -49,10 +49,17 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 3,
         marginTop: theme.spacing.unit * 2,
         marginBottom: theme.spacing.unit * 2,
+        // background: '#F2994A'  /* fallback for old browsers */
+//      background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+        background: `linear-gradient(to right, #F2C94C, #F2994A)` /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     },
     cardContent: {
         paddingTop: theme.spacing.unit * 3,
         paddingBottom: theme.spacing.unit * 3,
+    },
+    summaryWrap: {
+        backgroundColor: '#000'
     }
 });
 
@@ -150,6 +157,38 @@ class CommentaryPanel extends Component {
                 return '-';
         }
     }
+    getHeaderClass(word) {
+        switch (word) {
+            case 'four':
+                return 'headerFour';
+            case 'two':
+                return 'headerTwo';
+            case 'three':
+                return 'headerThree';
+            case 'normal':
+                return 'headerZero';
+            case 'catch':
+                return 'headerWicket';
+            case 'six':
+                return 'headerSix';
+            case 'one':
+                return 'headerOne';
+            case 'end of over':
+                return 'headerEndofOver';
+            case 'run out':
+                return 'headerWicket';
+            case 'wicket':
+                return 'headerWicket';
+            case 'start of inning':
+                return 'headerStart';
+            case 'comment':
+                return 'headersStart';
+            case 'bye':
+                return 'headerExtra';
+            default: 
+                return '-';
+        }
+    }
 
     renderPanelMessages(messageList) {
         const {classes} = this.props;
@@ -166,6 +205,7 @@ class CommentaryPanel extends Component {
                         }
                         title={`Over Number - ${message.over_num}`}
                         subheader={message.type}
+                        className={`${this.getHeaderClass(message.type)}`}
                     />
                     <CardContent className={classes.cardContent}>
                         <Typography paragraph component="message" dangerouslySetInnerHTML={{__html: message.message_text}}></Typography>

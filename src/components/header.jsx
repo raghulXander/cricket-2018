@@ -8,8 +8,14 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import LogoIcon from '../assets/logo.svg';
 import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import IconButton from '@material-ui/core/IconButton';
 
 import history from '../routes/history.js';
+
+const ITEM_HEIGHT = 48;
 
 const styles = theme => ({
     root: {
@@ -60,7 +66,34 @@ const styles = theme => ({
     }
 });
 
+
 class Header extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            anchorEl: null,
+        }
+
+        this.menuList = [
+            {
+              text: 'Matches',
+              tooltip: 'Matches',
+              onTouchTap: ()=>{history.push('matches');this.getActiveClass('matches');this.setState({ anchorEl: null });}
+            },
+            {
+              text: 'Summary',
+              tooltip:'Summary',
+              onTouchTap: ()=>{history.push('schedule');this.getActiveClass('schedule');this.setState({ anchorEl: null });}
+            },
+            {
+              text: 'Gallery',
+              tooltip:'Gallery',
+              onTouchTap: ()=>{history.push('gallery');this.getActiveClass('gallery');this.setState({ anchorEl: null });}
+            }
+        ]        
+    }
 
     render() {
         const { classes} = this.props;
@@ -68,7 +101,7 @@ class Header extends Component {
 
         return (
             <div className={classes.root}>
-            <AppBar position="static" className={classes.header}>
+            <AppBar position="fixed" className={classes.header}>
                 <Toolbar>
                     <div className={classes.headerWrap}>
                         <div className={classes.logoContent} onClick={() => history.push('')}>
@@ -77,17 +110,18 @@ class Header extends Component {
                                     Demo Cricket
                             </Typography>
                         </div>
-                        <div className={classes.buttonContent}>
+                        {window.innerWidth >= 768 && <div className={classes.buttonContent}>
                             <Button size="small"  color="secondary" className={`${classes.button} ${this.getActiveClass('matches')}`} onClick={() => {history.push('matches');this.getActiveClass('matches')}}>
                                 Matches
                             </Button>
                             <Button size="small"  color="secondary" className={`${classes.button} ${this.getActiveClass('schedule')}`} onClick={() => {history.push('schedule');this.getActiveClass('schedule')}}>
-                                Schedule
+                                Summary
                             </Button>
                             <Button size="small"  color="secondary" className={`${classes.button} ${this.getActiveClass('gallery')}`} onClick={() => {history.push('gallery');this.getActiveClass('gallery')}}>
                                 Gallery
                             </Button>
-                        </div>
+                        </div>}
+                        {window.innerWidth < 768 && this.renderSideMenu()}
                     </div>
                 </Toolbar>
             </AppBar>
@@ -104,6 +138,52 @@ class Header extends Component {
             return window.location.pathname === `/${name}` ? 'link-active' : '';
         }
     }
+
+    handleClick = event => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+    
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+
+    renderSideMenu() {
+        const { anchorEl } = this.state;
+        const open = Boolean(anchorEl);
+
+        return (
+            <React.Fragment>
+                <IconButton
+                    color="primary"
+                    aria-label="More"
+                    aria-owns={open ? 'long-menu' : undefined}
+                    aria-haspopup="true"
+                    onClick={this.handleClick}
+                >
+                    <MoreVertIcon />
+                </IconButton>
+                <Menu
+                    id="long-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={this.handleClose}
+                    PaperProps={{
+                        style: {
+                        maxHeight: ITEM_HEIGHT * 4.5,
+                        width: 200,
+                        },
+                    }}
+                    >
+                    {this.menuList.map(option => (
+                        <MenuItem key={option.text}  onClick={option.onTouchTap}>
+                        {option.text}
+                        </MenuItem>
+                    ))}
+                </Menu>
+            </React.Fragment>
+        )
+    }
+    
 }
 
 Header.propTypes = {

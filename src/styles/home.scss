@@ -1,44 +1,4 @@
-.quoteContentWrapper {
-    margin-bottom: 40px;
-    line-height: 1.6;
-    background: rgb(255, 204, 157);
-    border-radius: 10px;
-}
-
-.quoteSymbol {
-    float: left;
-    display: inline-block;
-    width: 10%;
-    line-height: .8;
-    font-size: 32px;
-    color: lighten(rgba(0,98,128,.75), 25%);
-    user-select: none;
-    
-    &.quoteSymbol--left {
-        vertical-align: top;
-        margin-bottom: 10px;
-    }
-    &.quoteSymbol--right {
-        float: right;
-        vertical-align: bottom;
-        text-align: right;
-    }
-}
-
-.quoteContent {
-    display: inline-block;
-    width: 60%;
-    max-width: 250px;
-    padding: 0 20px;
-    color: rgb(0,98,128);
-    font-size: 18px;
-}
-.quoteAuthor {
-    text-align: right;
-    margin-bottom: 0;
-    font-size: 14px;
-    color: rgba(0,98,128, 0.7);
-}
+// Home scss
 
 .main-wrap {
     background: #ff7e5f;  /* fallback for old browsers */
@@ -51,6 +11,48 @@
 
     h1 {
         margin-bottom: 0
+    }
+
+    .quoteContentWrapper {
+        margin-bottom: 40px;
+        line-height: 1.6;
+        background: rgb(255, 204, 157);
+        border-radius: 10px;
+    }
+    
+    .quoteSymbol {
+        float: left;
+        display: inline-block;
+        width: 10%;
+        line-height: .8;
+        font-size: 32px;
+        color: lighten(rgba(0,98,128,.75), 25%);
+        user-select: none;
+        
+        &.quoteSymbol--left {
+            vertical-align: top;
+            margin-bottom: 10px;
+        }
+        &.quoteSymbol--right {
+            float: right;
+            vertical-align: bottom;
+            text-align: right;
+        }
+    }
+    
+    .quoteContent {
+        display: inline-block;
+        width: 60%;
+        max-width: 250px;
+        padding: 0 20px;
+        color: rgb(0,98,128);
+        font-size: 18px;
+    }
+    .quoteAuthor {
+        text-align: right;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: rgba(0,98,128, 0.7);
     }
 }
 
@@ -157,9 +159,9 @@
                 }
             }
 
-            .quotes-container {
+            .quoteContentWrapper {
                 .quoteContent {
-                    font-size: 16px;
+                    font-size: 17px;
                 }
 
                 .quoteSymbol {
@@ -188,12 +190,13 @@
                 > .labels {
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-start;
+                    justify-content: space-evenly;
                     height: auto;
                     width: auto;
 
                     > li {
                         min-height: 100px;
+                        line-height: 6;
                     }
                 }
             }

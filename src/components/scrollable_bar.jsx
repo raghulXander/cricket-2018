@@ -21,7 +21,7 @@ import CommentaryPanel from './commentary_panel'
 
 function TabContainer(props) {
     return (
-        <Typography component="div" style={{ padding: 8 * 3, background: '#E3E6E3' }}>
+        <Typography component="div" style={{ padding: 8 * 3, background: `linear-gradient(to right, #414345, #232526)`}}>
             {props.children}
         </Typography>
     );
@@ -35,6 +35,7 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
         width: '100%',
+        marginTtop: '50px',
         backgroundColor: theme.palette.background.paper,
     },
 });
@@ -80,8 +81,8 @@ class ScrollbleBar extends Component {
                         onChange={this.handleChange}
                         scrollable
                         scrollButtons="on"
-                        indicatorColor="primary"
-                        textColor="primary"
+                        indicatorColor="secondary"
+                        textColor="secondary"
                     >
                         {this.renderTabHeader(commentaryData)}
                     </Tabs>
