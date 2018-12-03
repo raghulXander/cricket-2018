@@ -20,14 +20,17 @@ export const receiveCommentaryError = (error) => ({
 })
   
 export const getData = () => {
-    axios.get(BASEURL)
-    .then(res => {
-        console.log(res,"hgjhjg")
-        if (res.status && !isEmpty(res.data.commentarydetails)) {
-            receiveCommentaryData(res.data.commentarydetails)
-        }
-    })
-    .catch(error => {
-        receiveCommentaryError(error);
-    });
+    return (dispatch) => {
+        axios.get(BASEURL)
+        .then(res => {
+            
+            if (res.status && !isEmpty(res.data.commentarydetails)) {
+                dispatch(receiveCommentaryData(res.data.commentarydetails));
+            }
+        })
+        .catch(error => {
+            dispatch(receiveCommentaryError(error));
+        });
+    }
+
 }

@@ -3,7 +3,7 @@
 //Global
 import React, { Component} from 'react';
 import {connect} from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 import Loadable from 'react-loading-overlay';
 import {isEmpty} from 'lodash';
 
@@ -11,26 +11,24 @@ import {getData, getCommentaryData} from '../actions/commentary.action'
 
 //Local
 import ScrollBar from '../components/scrollable_bar.jsx';
-const BASEURL = 'https://livescore.sportstarlive.com/api/cricket/commentary/pakistan-v-new-zealand-test-series-in-uae-2018/44249/pakistan-vs-new-zealand'
 
 class Home extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            loading: true,
+            loading: false,
             commentaryData: null
         }
     }
 
     componentDidMount() {
-        getCommentaryData();
-        getData();
-        this.getInningsData();
+        this.props.getCommentaryData();
+        this.props.getData();
     }
     
     render() {
-        const {loading, commentaryData} = this.state;
+        const {loading, commentaryData} = this.props;
 
         if (loading) {
             return (
@@ -48,31 +46,34 @@ class Home extends Component {
         }
     }
 
-    getInningsData = () => {
-        axios.get(BASEURL)
-        .then(res => {
-            if (res && !isEmpty(res.data.commentarydetails)) {
-                this.setState({
-                    commentaryData: res.data.commentarydetails,
-                    loading: false
-                })
-            } else {
-                this.setState({
-                    commentaryData: null,
-                    loading: false
-                })
-            }
-        })
-    }
+    // getInningsData = () => {
+    //     axios.get(BASEURL)
+    //     .then(res => {
+    //         if (res && !isEmpty(res.data.commentarydetails)) {
+    //             this.setState({
+    //                 commentaryData: res.data.commentarydetails,
+    //                 loading: false
+    //             })
+    //         } else {
+    //             this.setState({
+    //                 commentaryData: null,
+    //                 loading: false
+    //             })
+    //         }
+    //     })
+    // }
 }
 
 const mapStateToProps = state => ({
-    commentaryData: state.commentary,
+    commentaryData: state.commentaryReducers.commentary,
     loading: state.loading
 })
 
-const mapDispatchToProps = dispatch => ({
 
+const mapDispatchToProps = dispatch => ({
+    getCommentaryData: () => {dispatch(getCommentaryData())},
+    getData: () => {dispatch(getData())},
+    getCommentaryData: () => {dispatch(getCommentaryData())},
 })
 
 export default connect (mapStateToProps, mapDispatchToProps)(Home);

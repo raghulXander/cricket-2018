@@ -46,8 +46,18 @@ class ScrollbleBar extends Component {
 
         this.state = {
             value: 0,
-            loading: false
+            loading: true,
+            commentaryData: null
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.commentaryData !== nextProps.commentaryData) {
+            this.setState({
+                commentaryData: nextProps.commentaryData,
+                loading: nextProps.loading
+            })
+        }
     }
 
     handleChange = (event, value) => {
@@ -59,8 +69,8 @@ class ScrollbleBar extends Component {
     };
 
     render() {
-        const { classes, commentaryData } = this.props;
-        const { value, loading } = this.state;
+        const { classes } = this.props;
+        const { value, loading, commentaryData } = this.state;
 
         if (loading) {
             return (
@@ -97,12 +107,12 @@ class ScrollbleBar extends Component {
                         onChange={this.handleChange}
                         scrollable
                         scrollButtons="on"
-                        indicatorColor="#fff"
+                        indicatorColor="secondary"
                         textColor="primary"
                         >
                         <Tab label="Default" />
                     </Tabs>
-                    <TabContainer>No Inningg Data</TabContainer>}
+                    <TabContainer>No Innings Data</TabContainer>
                 </div>
             )
         }
