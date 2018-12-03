@@ -2,9 +2,12 @@
 
 //Global
 import React, { Component} from 'react';
-import Loadable from 'react-loading-overlay';
+import {connect} from 'react-redux';
 import axios from 'axios';
+import Loadable from 'react-loading-overlay';
 import {isEmpty} from 'lodash';
+
+import {getData, getCommentaryData} from '../actions/commentary.action'
 
 //Local
 import ScrollBar from '../components/scrollable_bar.jsx';
@@ -21,6 +24,8 @@ class Home extends Component {
     }
 
     componentDidMount() {
+        getCommentaryData();
+        getData();
         this.getInningsData();
     }
     
@@ -36,8 +41,6 @@ class Home extends Component {
                 >
                 </Loadable>
             )
-        } else if (commentaryData === null && !loading) {
-            return <div> No data Found</div>
         } else {
             return (
                 <ScrollBar commentaryData={commentaryData} />
@@ -63,4 +66,13 @@ class Home extends Component {
     }
 }
 
-export default(Home);
+const mapStateToProps = state => ({
+    commentaryData: state.commentary,
+    loading: state.loading
+})
+
+const mapDispatchToProps = dispatch => ({
+
+})
+
+export default connect (mapStateToProps, mapDispatchToProps)(Home);
