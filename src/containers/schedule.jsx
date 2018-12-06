@@ -61,54 +61,57 @@ const rows = [
 class Schedule extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+
+        }
     }
 
 
     render() {
         const { classes } = this.props;
 
-
         return (
             <div>
-              <Paper className={classes.root} elevation={1}>
-                <Typography variant="h3" component="h3">
-                    Indian Premier League, 2018
-                </Typography>
-                <Typography component="p">
-                    60 T20s . Apr 07-May 27 <br/><br/><br/>
-                    The 2018 season of the Indian Premier League, also known as IPL 11, was the eleventh season of the IPL, a professional Twenty20 cricket league established by the BCCI in 2007
-                </Typography>
-                <Paper className={classes.tableRoot}>
-                    <Table className={classes.table}>
-                        <TableHead>
-                            <TableRow>
-                                <MatchTableCell>Teams</MatchTableCell>
-                                <MatchTableCell numeric>Total</MatchTableCell>
-                                <MatchTableCell numeric>Won</MatchTableCell>
-                                <MatchTableCell numeric>Lost</MatchTableCell>
-                                <MatchTableCell numeric>Points</MatchTableCell>
-                                <MatchTableCell numeric>Run rate</MatchTableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {rows.map(row => {
-                                return (
-                                    <TableRow className={classes.row} key={row.team}>
-                                        <MatchTableCell component="th" scope="row">
-                                            {row.team}
-                                        </MatchTableCell>
-                                        <MatchTableCell numeric>{row.total}</MatchTableCell>
-                                        <MatchTableCell numeric>{row.won}</MatchTableCell>
-                                        <MatchTableCell numeric>{row.lost}</MatchTableCell>
-                                        <MatchTableCell numeric>{row.points}</MatchTableCell>
-                                        <MatchTableCell numeric>{row.runrate}</MatchTableCell>
-                                    </TableRow>
-                                );
-                            })}
-                        </TableBody>
-                    </Table>
+                <Paper className={classes.root} elevation={1}>
+                    <Typography variant="h3" component="h3">
+                        Indian Premier League, 2018
+                    </Typography>
+                    <Typography component="p">
+                        60 T20s . Apr 07-May 27 <br/><br/><br/>
+                        The 2018 season of the Indian Premier League, also known as IPL 11, was the eleventh season of the IPL, a professional Twenty20 cricket league established by the BCCI in 2007
+                    </Typography>
+                    <Paper className={classes.tableRoot}>
+                        <Table className={classes.table}>
+                            <TableHead>
+                                <TableRow>
+                                    <MatchTableCell>Teams</MatchTableCell>
+                                    <MatchTableCell numeric>Total</MatchTableCell>
+                                    <MatchTableCell numeric>Won</MatchTableCell>
+                                    <MatchTableCell numeric>Lost</MatchTableCell>
+                                    <MatchTableCell numeric>Points</MatchTableCell>
+                                    <MatchTableCell numeric>Run rate</MatchTableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rows.map(row => {
+                                    return (
+                                        <TableRow className={classes.row} key={row.team}>
+                                            <MatchTableCell component="th" scope="row">
+                                                {row.team}
+                                            </MatchTableCell>
+                                            <MatchTableCell numeric>{row.total}</MatchTableCell>
+                                            <MatchTableCell numeric>{row.won}</MatchTableCell>
+                                            <MatchTableCell numeric>{row.lost}</MatchTableCell>
+                                            <MatchTableCell numeric>{row.points}</MatchTableCell>
+                                            <MatchTableCell numeric>{row.runrate}</MatchTableCell>
+                                        </TableRow>
+                                    );
+                                })}
+                            </TableBody>
+                        </Table>
+                    </Paper>
                 </Paper>
-              </Paper>
             </div>
         );
     }

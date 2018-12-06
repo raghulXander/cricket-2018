@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-import Home from '../assets/home.jpg';
+import HomeImage from '../assets/home.jpg';
 import Home2 from '../assets/home_2.jpg';
 import history from '../routes/history';
 
@@ -40,7 +40,7 @@ const styles = theme => ({
     }
 });
 
-class App extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
     
@@ -65,6 +65,7 @@ class App extends Component {
 
     calculateCountdown(endDate) {
         let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 1000;
+        console.log(diff,"dfiiff")
         const timeLeft = {
             years: 0,
             days: 0,
@@ -153,7 +154,7 @@ class App extends Component {
                 </Parallax>
                 <h1 style={{margin: '30px'}}>| | | | | | |</h1>
                 <Parallax
-                bgImage={Home}
+                bgImage={HomeImage}
                 strength={300}
                 blur={{ min: -1, max: 3 }}
                 renderLayer={percentage => (
@@ -224,13 +225,13 @@ class App extends Component {
     }
 }
 
-App.propTypes = {
+Home.propTypes = {
     date: PropTypes.string.isRequired
 };
 
-App.defaultProps = {
+Home.defaultProps = {
     date: new Date('Wednesday, 30 May 2019 0:00:00')
 };
 
-export default withStyles(styles)(App);
+export default withStyles(styles)(Home);
 

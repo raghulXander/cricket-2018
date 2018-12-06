@@ -3,16 +3,14 @@
 //Global
 import React, { Component} from 'react';
 import {connect} from 'react-redux';
-// import axios from 'axios';
 import Loadable from 'react-loading-overlay';
-import {isEmpty} from 'lodash';
 
-import {getData, getCommentaryData} from '../actions/commentary.action'
 
 //Local
+import {getData, getCommentaryData} from '../actions/commentary.action'
 import ScrollBar from '../components/scrollable_bar.jsx';
 
-class Home extends Component {
+class Matches extends Component {
     constructor(props) {
         super(props);
 
@@ -23,7 +21,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.props.getCommentaryData();
+        this.props.initDataFetch();
         this.props.getData();
     }
     
@@ -71,9 +69,8 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-    getCommentaryData: () => {dispatch(getCommentaryData())},
+    initDataFetch: () => {dispatch(getCommentaryData())},
     getData: () => {dispatch(getData())},
-    getCommentaryData: () => {dispatch(getCommentaryData())},
 })
 
-export default connect (mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Matches);

@@ -1,3 +1,5 @@
+// Index
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
@@ -45,11 +47,11 @@ class Layout extends Component {
 export default class App extends Component {
     render() {
         return (
-                <Provider store={store}>
-                    <Router history={history} >
-                        <Layout />
-                    </Router>
-                </Provider>
+            <Provider store={store}>
+                <Router history={history} >
+                    <Layout />
+                </Router>
+            </Provider>
         )
     }
 }

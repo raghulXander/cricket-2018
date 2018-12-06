@@ -60,8 +60,8 @@ class SummaryTable extends Component {
                                     </div>
                                 </TableCell>
                             </TableRow>
-                    </TableBody>
-                </Table>
+                        </TableBody>
+                    </Table>
                 </Paper>
             )
         }

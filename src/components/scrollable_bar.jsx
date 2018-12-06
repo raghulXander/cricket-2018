@@ -1,4 +1,4 @@
-//ScrollbleBar
+//ScrollableBar
 
 //Global
 import React, {Component} from 'react';
@@ -40,7 +40,7 @@ const styles = theme => ({
     },
 });
 
-class ScrollbleBar extends Component {
+class ScrollableBar extends Component {
     constructor(props) {
         super(props);
 
@@ -122,33 +122,29 @@ class ScrollbleBar extends Component {
         const { commentaryData } = this.props;
         const { value } = this.state;
 
-        if (commentaryData.data.length > 0) {
-            return (
-                <TabContainer>
-                    <CommentaryPanel
-                        panelData={commentaryData.data[value]}
-                    />
-                </TabContainer>
-            )
-        }
+        return (
+            <TabContainer>
+                <CommentaryPanel
+                    panelData={commentaryData.data[value]}
+                />
+            </TabContainer>
+        )
     }
 
     renderTabHeader(commentaryData) {
-        if (commentaryData.data.length > 0) {
-            return commentaryData.data.map((innings, idx) => {
-                if (innings) {
-                    let title = `Match - ${innings.innings_id}`
-                    return (
-                        <Tab key={idx} label={title} />
-                    )
-                }
-            })
-        }
+        return commentaryData.data.map((innings, idx) => {
+            if (innings) {
+                let title = `Match - ${innings.innings_id}`
+                return (
+                    <Tab key={idx} label={title} />
+                )
+            }
+        })
     }
 }
 
-ScrollbleBar.propTypes = {
+ScrollableBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ScrollbleBar);
+export default withStyles(styles)(ScrollableBar);
